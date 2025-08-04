@@ -6,16 +6,20 @@ type Props = {
     className?: string;
 };
 
+interface BeforeInstallPromptEvent extends Event {
+    prompt: () => Promise<void>;
+    userChoice: Promise<{ outcome: 'accepted' | 'dismissed'; platform: string }>;
+}
+
 export function SaveButton({ label = 'Скачать', className }: Props) {
-    const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+    const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
 
     useEffect(() => {
-        // Добавляем обработчик для события 'beforeinstallprompt'
-        const handler = (e: any) => {
-            // Предотвращаем стандартное поведение браузера
-            e.preventDefault();
-            // Сохраняем событие в состоянии
-            setDeferredPrompt(e);
+        const handler = (e: Event) => {
+            if ('prompt' in e) {
+                e.preventDefault();
+                setDeferredPrompt(e as BeforeInstallPromptEvent);
+            }
         };
 
         window.addEventListener('beforeinstallprompt', handler);
@@ -31,10 +35,8 @@ export function SaveButton({ label = 'Скачать', className }: Props) {
             return;
         }
 
-        // Показываем диалог установки
-        deferredPrompt.prompt();
+        await deferredPrompt.prompt();
 
-        // Ждем ответа пользователя
         const { outcome } = await deferredPrompt.userChoice;
 
         if (outcome === 'accepted') {
@@ -45,7 +47,6 @@ export function SaveButton({ label = 'Скачать', className }: Props) {
         }
     };
 
-    // Кнопка будет активна только если `deferredPrompt` не null (событие сработало)
     return (
         <button
             type="button"
@@ -54,7 +55,7 @@ export function SaveButton({ label = 'Скачать', className }: Props) {
             className={className}
             disabled={!deferredPrompt}
         >
-            <BiSave />
+            <BiSave/>
             {label}
         </button>
     );

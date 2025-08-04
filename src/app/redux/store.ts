@@ -1,15 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import roomConstructorReducer from './slices/roomConstructor';
-import toolsReducer from './slices/tools';
-import markupReducer from './slices/markup';
+import roomConstructorReducer, {roomConstructorSlice} from '@/entities/Room/model/roomConstructorSlice';
+import toolsReducer, {toolsSlice} from '@/entities/Room/model/toolsSlice';
+import markupReducer, {markupSlice} from '@/entities/DuplicateEditor/model/markupSlice';
 
 export const store = configureStore({
     reducer: {
-        roomConstructor: roomConstructorReducer,
-        tools: toolsReducer,
-        markup: markupReducer,
+        [roomConstructorSlice.name]: roomConstructorReducer,
+        [toolsSlice.name]: toolsReducer,
+        [markupSlice.name]: markupReducer,
     },
 });
-
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;

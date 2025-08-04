@@ -1,0 +1,76 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 0.5rem;
+}
+
+.renameGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 35px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  color: white;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.undo {
+  background-color: #3b82f6;
+}
+
+.delete {
+  background-color: #ef4444;
+}
+
+.rename {
+  background-color: #10b981;
+}
+
+.clear {
+  background-color: #9ca3af;
+}
+
+.diagonalSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+   h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.diagonalButtons {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.pointButton {
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  background-color: #e5e7eb;
+  font-size: 0.875rem;
+}
+
+.pointButtonActive {
+  background-color: #bfdbfe;
+}
+
+.icon {
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+

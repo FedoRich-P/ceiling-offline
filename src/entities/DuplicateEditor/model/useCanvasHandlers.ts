@@ -1,16 +1,15 @@
 import Konva from "konva";
 import {v4 as uuidv4} from "uuid";
-import {
-    addMarkupIcon, addStroke,
-    currentStrokeSelector,
-    iconLabelsSelector,
-    isDrawingSelector,
-    markupIconsSelector, selectedIconIdSelector, setCurrentStroke, setIsDrawing, setSelectedIconId
-} from "@/app/redux/slices/markup.ts";
-import {useAppDispatch, useAppSelector} from "@/shared/hooks/redux/hooks.ts";
-import {colorSelector, lineWidthSelector, modeSelector} from "@/app/redux/slices/tools.ts";
+import {useAppDispatch, useAppSelector} from "@/shared/redux/hooks.ts";
 import {ICONS_TYPES} from "@/shared/constants/controlsIcons.tsx";
 import type {MarkupIconType} from "@/shared/types/point.ts";
+import {
+    addMarkupIcon, addStroke,
+    currentStrokeSelector, iconLabelsSelector,
+    isDrawingSelector,
+    markupIconsSelector, selectedIconIdSelector, setCurrentStroke, setIsDrawing, setSelectedIconId
+} from "@/entities/DuplicateEditor/model/markupSlice.ts";
+import {colorSelector, lineWidthSelector, modeSelector} from "@/entities/Room/model/toolsSlice.ts";
 
 export const useCanvasHandlers = () => {
     const dispatch = useAppDispatch();
@@ -91,68 +90,3 @@ export const useCanvasHandlers = () => {
         handleMouseUp,
     };
 };
-
-// import Konva from "konva";
-// import { setSelectedIconId } from "../../markupSlice.ts";
-// import { useAppDispatch } from "../../../../app/redux/hooks.ts";
-// import { useDrawing } from "./useDrawing.ts";
-// import {useMarkupIcons} from "./useMarkupIcons.ts";
-//
-// export const useCanvasHandlers = () => {
-//     const dispatch = useAppDispatch();
-//     const drawing = useDrawing();
-//     const icons = useMarkupIcons();
-//
-//     const handleMouseDown = (e: Konva.KonvaEventObject<MouseEvent>) => {
-//         const stage = e.target.getStage();
-//         const pos = stage?.getPointerPosition();
-//
-//         let clickedIconGroup: Konva.Group | null = null;
-//         let currentNode: Konva.Node | null = e.target;
-//
-//         while (currentNode && currentNode !== stage) {
-//             if (currentNode.name() === "icon-group" && currentNode instanceof Konva.Group) {
-//                 clickedIconGroup = currentNode;
-//                 break;
-//             }
-//             currentNode = currentNode.parent;
-//         }
-//
-//         if (clickedIconGroup) {
-//             const iconId = clickedIconGroup.id();
-//             if (icons.icons.some(i => i.id === iconId)) {
-//                 icons.handleIconClick(iconId, e);
-//                 return;
-//             }
-//         }
-//
-//         if (drawing.toolMode.startsWith("add") && pos) {
-//             icons.tryAddIcon(pos.x, pos.y);
-//             return;
-//         }
-//
-//         if ((drawing.toolMode === "pencil" || drawing.toolMode === "line") && pos) {
-//             drawing.startDrawing(pos.x, pos.y);
-//             dispatch(setSelectedIconId(null));
-//         } else {
-//             dispatch(setSelectedIconId(null));
-//         }
-//     };
-//
-//     const handleMouseMove = (e: Konva.KonvaEventObject<MouseEvent>) => {
-//         const pos = e.target.getStage()?.getPointerPosition();
-//         if (pos) drawing.draw(pos.x, pos.y);
-//     };
-//
-//     const handleMouseUp = () => {
-//         drawing.stopDrawing();
-//     };
-//
-//     return {
-//         ...drawing,
-//         ...icons,
-//         handleMouseDown,
-//         handleMouseMove,
-//         handleMouseUp,
-//     };
-// };

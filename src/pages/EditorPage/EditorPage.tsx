@@ -1,7 +1,7 @@
 import styles from './EditorPage.module.scss';
 import {Suspense} from "react";
-import {ControlsPanelRightLazy} from "@/entities/ControlsPanelRight/ui/ControlsPanelRightLazy.tsx";
-import {DuplicateEditorLazy} from "@/entities/DuplicateEditor/ui/DuplicateEditorLazy.tsx";
+import {ControlsPanelRightLazy} from "@/widgets/ControlsPanelRight/ui/ControlsPanelRightLazy";
+import {DuplicateEditorLazy} from "@/entities/DuplicateEditor/ui/DuplicateEditorLazy";
 
 export function EditorPage() {
     return <>

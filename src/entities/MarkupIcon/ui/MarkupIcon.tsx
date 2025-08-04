@@ -1,13 +1,10 @@
 import { memo, type ReactNode } from "react";
 import { Circle, Group } from "react-konva";
 import { Html } from "react-konva-utils";
-import { useAppDispatch, useAppSelector } from "@/shared/hooks/redux/hooks.ts";
-import {
-    setSelectedIconId,
-    updateMarkupIconPosition,
-} from "@/app/redux/slices/markup.ts";
+import { useAppDispatch, useAppSelector } from "@/shared/redux/hooks.ts";
 import styles from "./MarkupIcon.module.scss";
 import Konva from "konva";
+import {setSelectedIconId, updateMarkupIconPosition} from "@/entities/DuplicateEditor/model/markupSlice.ts";
 
 interface MarkupIconProps {
     id: string;

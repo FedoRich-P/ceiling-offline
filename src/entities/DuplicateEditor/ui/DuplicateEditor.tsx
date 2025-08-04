@@ -1,11 +1,7 @@
 import { Stage, Layer, Line } from "react-konva";
 import clsx from "clsx";
 import styles from "./DuplicateEditor.module.scss";
-
-import { useAppDispatch, useAppSelector } from "@/shared/hooks/redux/hooks.ts";
-import { pointsSelector } from "@/app/redux/slices/roomConstructor.ts";
-import { deleteMarkupIcon, strokesSelector } from "@/app/redux/slices/markup.ts";
-
+import { useAppDispatch, useAppSelector } from "@/shared/redux/hooks.ts";
 import GridBackground from "@/shared/components/GridBackground/ui/GridBackground.tsx";
 import { PointLabels } from "@/shared/components/PointLabels/ui/PointLabels.tsx";
 import { ICONS_TYPES } from "@/shared/constants/controlsIcons.tsx";
@@ -13,6 +9,8 @@ import { MarkupIcon } from "../../MarkupIcon/ui/MarkupIcon.tsx";
 import { useCanvasHandlers } from "../model/useCanvasHandlers.ts";
 import {CANVAS_HEIGHT, CANVAS_WIDTH} from "@/shared/constants/canvasSizes.ts";
 import {DeleteIconButton} from "@/shared/components/DeleteIconButton/DeleteIconButton.tsx";
+import {pointsSelector} from "@/entities/Room/model/roomConstructorSlice.ts";
+import {deleteMarkupIcon, strokesSelector} from "@/entities/DuplicateEditor/model/markupSlice.ts";
 
 interface DuplicateEditorProps {
     className?: string;

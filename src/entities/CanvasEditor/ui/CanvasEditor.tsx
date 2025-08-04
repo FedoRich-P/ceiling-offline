@@ -3,25 +3,23 @@ import { Circle, Layer, Stage } from 'react-konva';
 import Konva from 'konva';
 import clsx from 'clsx';
 
-import { Diagonals } from '@/shared/components/Diagonals/ui/Diagonals.tsx';
-import { Lines } from '@/shared/components/Lines/ui/Lines.tsx';
+import { Diagonals } from '@/features/Diagonals/ui/Diagonals.tsx';
+import { Lines } from '@/features/Lines/ui/Lines.tsx';
 import GridBackground from '@/shared/components/GridBackground/ui/GridBackground.tsx';
 import { PointLabels } from '@/shared/components/PointLabels/ui/PointLabels.tsx';
 import SegmentLabels from '@/shared/components/SegmentLabels/ui/SegmentLabels.tsx';
 
-import { useAppDispatch, useAppSelector } from '@/shared/hooks/redux/hooks.ts';
-import {
-    addPoint,
-    diagonalsSelector,
-    pointsSelector,
-    selectedPointIndexSelector,
-    setSelectedPoint,
-    updatePoint,
-} from '@/app/redux/slices/roomConstructor.ts';
+import { useAppDispatch, useAppSelector } from '@/shared/redux/hooks.ts';
 import type { Point } from '@/shared/types/point.ts';
 import { CANVAS_HEIGHT, CANVAS_WIDTH } from '@/shared/constants/canvasSizes.ts';
 
 import styles from './CanvasEditor.module.scss';
+import {
+    addPoint,
+    diagonalsSelector,
+    pointsSelector,
+    selectedPointIndexSelector, setSelectedPoint, updatePoint
+} from "@/entities/Room/model/roomConstructorSlice.ts";
 
 interface CanvasEditorProps {
     className?: string;

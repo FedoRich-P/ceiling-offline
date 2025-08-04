@@ -3,7 +3,7 @@ import {Suspense} from "react";
 import {BasePageLazy} from "@/pages/BasePage/BasePageLazy.tsx";
 import {EditorPageLazy} from "@/pages/EditorPage/EditorPageLazy.tsx";
 import {MainLayout} from "@/app/layout/MainLayout.tsx";
-import {PATHS} from "@/app/routes/paths.ts";
+import {PATHS} from "@/shared/pathsRoutes/paths.ts";
 
 export const router = createBrowserRouter([
     {

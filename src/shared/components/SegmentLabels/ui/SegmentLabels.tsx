@@ -1,6 +1,5 @@
 import {Text} from 'react-konva';
 
-
 type Props = {
     points: { x: number; y: number; name?: string }[];
 }
@@ -18,8 +17,6 @@ const SegmentLabels = ({ points }: Props) => {
                 const next = points[(i + 1) % points.length];
                 const midX = (p.x + next.x) / 2;
                 const midY = (p.y + next.y) / 2;
-                // const label = `${p.name || String.fromCharCode(65 + i)}${next.name || String.fromCharCode(65 + (i + 1) % points.length)}`;
-                // const len = distance(p, next).toFixed(2);
 
                 return (
                     <Text

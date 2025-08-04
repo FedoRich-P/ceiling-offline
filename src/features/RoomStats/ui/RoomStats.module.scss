@@ -1,0 +1,22 @@
+.wrapper {
+  padding: 0.5rem;
+  background-color: #f3f4f6;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  flex: 1;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.paragraph {
+  margin-bottom: 0.25rem;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

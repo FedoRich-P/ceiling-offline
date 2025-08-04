@@ -1,13 +1,5 @@
 import { FaLightbulb, FaRulerCombined } from 'react-icons/fa';
 import { LuLampCeiling } from 'react-icons/lu';
-import type {ReactElement} from "react";
-
-export interface IconTypeData {
-    type: 'light' | 'chandelier' | 'cornice_overlay' | 'cornice_hidden1' | 'cornice_hidden2';
-    icon: ReactElement;
-    label: string;
-    mode: string;
-}
 
 export const ICONS_TYPES = [
     { type: 'light', icon: <FaLightbulb color="orange" size={20} />, label: 'Свет', mode: 'addLight' },

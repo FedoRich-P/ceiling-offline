@@ -1,4 +1,4 @@
-import {db} from '@/shared/db/db';
+import {db} from '@/shared/service/db.ts';
 
 export async function syncUnsyncedRooms() {
     const rooms = await db.rooms.where({synced: false}).toArray();

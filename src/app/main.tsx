@@ -1,10 +1,11 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import {StrictMode} from 'react'
+import {createRoot} from 'react-dom/client'
 import './index.css'
-import App from './App.tsx'
 import {Provider} from "react-redux";
 import {store} from "./redux/store.ts";
-import { registerSW } from 'virtual:pwa-register';
+import {registerSW} from 'virtual:pwa-register';
+import {RouterProvider} from "react-router";
+import {router} from "@/app/routes/router.tsx";
 
 const updateSW = registerSW({
     onNeedRefresh() {
@@ -20,7 +21,7 @@ const updateSW = registerSW({
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
       <Provider store={store}>
-          <App />
+          <RouterProvider router={router}/>
       </Provider>
   </StrictMode>,
 )
