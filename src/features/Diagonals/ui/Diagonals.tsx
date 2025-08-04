@@ -37,4 +37,4 @@ export function Diagonals({diagonals, points}: Props) {
             })
         }
     </>;
-};
+}
